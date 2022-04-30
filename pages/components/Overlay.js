@@ -6,7 +6,7 @@ export default function Overlay(props) {
           <button onClick={props.toggle} className="text-white border-2 h-fit border-white rounded-lg px-8 py-2 hover:bg-emerald-700 hover:border-emerald-700 transition ease-in">Portfolio</button>
         </div>
         <div>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 text-neutral-400 mb-5 gap-5 lg:h-[450px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-4 text-neutral-400 mb-5 gap-5 lg:h-[450px]">
             <div data-aos="fade-up" data-aos-delay="0">
                 <div className='cursor-default h-full rounded-xl bg-dark/80 p-5 hover:bg-[#212121] w-full text-white hover:text-emerald-700 hover:border-emerald-700 transition ease-in'>
                     <h2 className="text-2xl font-bold mb-2">Design</h2>

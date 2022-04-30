@@ -13,7 +13,7 @@ export default function Social(props) {
     }
 
     return (
-            <a aria-label={props.name} target="_blank" href={props.url}
+            <a aria-label={props.name} target="_blank" href={props.url} rel="noreferrer"
                 className={`bg-[#212121] p-3 rounded-xl transition-all hover:scale-105 border-transparent border-2 ${props.color}`}>
                 {icon()}
             </a>
