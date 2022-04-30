@@ -10,7 +10,7 @@ module.exports = {
         'light': '#f4f4f4',
       },
       backgroundImage: {
-        'leaves': "url('../public/bg.jpg')",
+        'leaves': "url('https://images.pexels.com/photos/3473569/pexels-photo-3473569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
       }
     },
   },
