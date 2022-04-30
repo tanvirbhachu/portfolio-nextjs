@@ -1,16 +1,51 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  box-sizing: border-box;
+@layer components {
+	* {
+		font-family: 'Poppins', sans-serif;
+	}
+
+	/* width */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: rgb(73, 73, 73);
+		border-radius: 5px;
+		border: 3px solid transparent;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: rgb(131, 131, 131);
+	}
+
+	.no-scroll::-webkit-scrollbar {
+		width: 0px;
+	}
+
+	.bg-split {
+		background-image: linear-gradient(to right, #101010, #101010 0%, #1a1a1a 0%);
+		background-attachment:fixed;
+		background-repeat: no-repeat;
+	}
+
+	body {
+		background-color: #101010
+	}
+
+	.delay-half {
+		--animate-delay: 0.5s;
+	}
 }
