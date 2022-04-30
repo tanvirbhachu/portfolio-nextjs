@@ -2,7 +2,7 @@ import Skill from './Skill'
 
 export default function Content() {
     return (
-        <div className='lg:w-1/2 lg:sticky max-w-5xl p-10 pb-0 lg:overflow-scroll lg:no-scroll'>
+        <div className='lg:w-1/2 lg:sticky max-w-5xl p-10 pb-0 lg:overflow-y-scroll overflow-x-hidden lg:no-scroll'>
             <div className="lg:mt-20 mt-8">
                 <h2 className="text-2xl font-medium mb-5 text-white" data-aos="fade-left" data-aos-delay="0">My Skills</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 text-neutral-400 mb-5">
