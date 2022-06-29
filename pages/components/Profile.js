@@ -14,7 +14,7 @@ export default function Profile(props) {
                     and look visually appealing while also providing function.</p>
             </div>
             <div className="mb-10 flex gap-4">
-                <button onClick={() => props.toggle()} className="text-white border-2 border-white rounded-lg px-5 py-2 hover:bg-emerald-700 hover:border-emerald-700 transition ease-in" data-aos="fade-right" data-aos-delay="200">Freelancing</button>
+                {/*<button onClick={() => props.toggle()} className="text-white border-2 border-white rounded-lg px-5 py-2 hover:bg-emerald-700 hover:border-emerald-700 transition ease-in" data-aos="fade-right" data-aos-delay="200">Freelancing</button>*/}
                 <a href="mailto:tbhachu2@gmail.com" className="text-white border-2 border-white rounded-lg px-5 py-2 hover:bg-emerald-700 hover:border-emerald-700 transition ease-in" data-aos="fade-right" data-aos-delay="250">Email</a>
             </div>
             <div className="mb-5">
