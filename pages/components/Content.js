@@ -20,7 +20,7 @@ export default function Content() {
                 <h2 className="text-2xl font-medium mb-5 text-white" data-aos="fade-left" data-aos-delay="100">Projects</h2>
                 <div className='mb-10'>
                     <div data-aos="fade-left" data-aos-delay="150">
-                        <a href="https://astroweather-darksimilarity.netlify.app/" target="_blank" rel="noreferrer"
+                        <a href="https://astroweather-tanvirbhachu.netlify.app/" target="_blank" rel="noreferrer"
                             className="block bg-dark/80 w-full mb-5 p-5 hover:bg-[#212121] rounded-xl transition hover:scale-105 border-neutral-700 border-2 hover:border-emerald-700">
                             <h3 className="text-2xl mb-2 text-white">AstroWeather</h3>
                             <p className="text-neutral-400 text-sm">AstroWeather is my first public project. It’s a
