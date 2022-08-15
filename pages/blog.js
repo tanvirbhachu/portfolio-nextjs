@@ -21,21 +21,21 @@ export default function App() {
     toggleClose(true)
 
     setTimeout(() => {
-        router.push('/blog');
+        router.push('/');
     }, 800);
   }
 
   function main() {
     return (
-      <div className='w-screen no-scroll overflow-x-hidden'>
-        <div className={`lg:w-1/2 w-full bg-dark h-screen absolute left-0 block ${close ? "animate__animated animate__fadeOutLeft animate-delay-4" : "" }`} data-aos="fade-left" data-aos-delay="0">
+      <div className='w-screen no-scroll overflow-hidden bg-dark'>
+        <div className={`w-full bg-leaves h-[200px] block ${close ? "animate__animated animate__fadeOutLeft animate-delay-4" : "" }`} data-aos="fade-left" data-aos-delay="0">
+        
         </div>
 
         <div className='z-10'>
-          <div className='max-w-7xl mx-auto md:h-screen flex overflow-x-hidden'>
-            <div className='lg:flex lg:flex-row flex-col mx-auto md:h-screen'>
+          <div className='max-w-7xl mx-auto h-screen flex'>
+            <div className='lg:flex lg:flex-row flex-col mx-auto h-screen'>
               <Profile toggle={toggle} toBlog={blog} close={close} />
-              <Content close={close} />
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function App() {
   }
 
   return (
-    <div className='lg:bg-leaves bg-dark bg-cover overflow-x-hidden md:w-screen w-full'>
+    <div className='lg:bg-leaves bg-dark bg-cover'>
       <Head>
         <meta charset="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
