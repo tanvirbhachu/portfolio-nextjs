@@ -1,6 +1,7 @@
 import Social from "./Social"
+import Link from "next/link"
 
-export default function Profile(props) {
+export function Profile(props) {
 
     return (
         <div className={`lg:w-1/2 lg:sticky lg:overflow-y-scroll overflow-x-hidden max-w-5xl p-10 md:pb-10 pb-0 ${props.close ? "animate__animated animate__fadeOutLeft animate-delay-2" : ""}`}>
@@ -32,6 +33,44 @@ export default function Profile(props) {
                     <Social name="Twitter" color="hover:border-blue-500" url="https://twitter.com/DarkSimilarity" />
                     <Social name="LinkedIn" color="hover:border-yellow-500" url="https://www.linkedin.com/in/tanvir-bhachu/" />
                     <Social name="Github" color="hover:border-red-500" url="https://github.com/DarkSimilarity" />
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default function Left(props) {
+
+    return (
+        <div className={`lg:w-1/2 lg:sticky lg:overflow-y-scroll overflow-x-hidden pb-0 ${props.close ? "animate__animated animate__fadeOutLeft animate-delay-2" : ""}`}>
+            <div className="h-full flex text-white">
+                <div className="md:h-fit h-screen w-fit p-5 flex flex-col my-auto md:ml-auto justify-center mx-auto max-w-xl">
+                    <div className="w-fit">
+                        <span className="">Hey, my name is</span>
+                        <h1 className="md:text-6xl text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Tanvir Bhachu</h1>
+                    </div>
+                    <div className="">
+                        <p className="text-neutral-400 mb-4 text-base">
+                        Welcome to my portfolio. I'm an 18 year old react developer and I've been coding for like 7 years now. I do a lot 
+                        of things and am slowly adding more, so have fun exploring!</p>
+                    </div>
+                    <div className="flex gap-3 w-full">
+                        <a className="flex-1 text-center" href="https://www.linkedin.com/in/tanvir-bhachu/" target="_blank" rel="noreferrer">
+                            <div className="bg-[#212121] hover:bg-indigo-600 transition-all ease-in p-3">
+                                <span>LinkedIn</span>
+                            </div>
+                        </a>
+                        <a className="flex-1 text-center" href="mailto:tbhachu2@gmail.com" rel="noreferrer">
+                            <div className="bg-[#212121] hover:bg-indigo-600 transition-all ease-in p-3">
+                                <span>Email</span>
+                            </div>
+                        </a>
+                        <a className="flex-1 text-center" href="/Tanvir Bhachu Resume.pdf" target="_blank" rel="noreferrer">
+                            <div className="bg-[#212121] hover:bg-indigo-600 transition-all ease-in p-3">
+                                <span>Resume</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

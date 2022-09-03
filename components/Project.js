@@ -1,18 +1,23 @@
-export default function Project(props) {
+import Link from 'next/link'
+
+export default function Project({url, title, description, tailwind, javascript, react, netlify, api, next, sanity, mongo, vercel}) {
     return (
-        <a href={props.url} target="_blank" rel="noreferrer"
-            className="block cursor-none bg-dark w-full p-5 hover:bg-[#212121] rounded-xl transition hover:scale-105 border-transparent border-2 hover:border-blue-500">
-            <h3 className="text-2xl mb-2">{props.name}</h3>
-            <p className="text-neutral-400 text-sm">AstroWeather is my first public project. It’s a
-                web weather app built using Tailwind CSS and makes use of a weather api for data. 
-                The app is mobile-friendly and supports both Celsius and Fahrenheit aswell as kph 
-                and mph.</p>
-            <div className="flex flex-wrap flex-grow gap-2 mt-4">
-                <div className="bg-blue-500 text-dark py-1 px-2 text-sm rounded-md">TailwindCSS</div>
-                <div className="bg-yellow-500 text-dark py-1 px-2 text-sm rounded-md">JavaScript</div>
-                <div className="bg-red-500 text-dark py-1 px-2 text-sm rounded-md">API</div>
-                <div className="bg-cyan-500 text-dark py-1 px-2 text-sm rounded-md">Netlify</div>
-            </div>
-        </a>
+        <Link href={url} target="_blank" rel="noreferrer">
+            <a className="block cursor-none bg-[#101010] w-full p-6 hover:bg-[#212121] transition hover:scale-105 md:border-[#101010] border-[#212121] border-2 hover:border-indigo-600">
+                <h3 className="text-2xl mb-2 text-white">{title}</h3>
+                <p className="text-neutral-400 text-sm">{description}</p>
+                <div className="flex flex-wrap flex-grow gap-2 mt-4">
+                    {react && <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">ReactJS</span>}
+                    {next && <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">NextJS</span>}
+                    {tailwind && <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">TailwindCSS</span>}
+                    {javascript && <span className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">JavaScript</span>}
+                    {netlify && <span className="bg-cyan-100 text-cyan-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Netlify</span>}
+                    {vercel && <span className="bg-purple-100 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">Vercel</span>}
+                    {api && <span className="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">API</span>}
+                    {mongo && <span className="bg-emerald-100 text-emerald-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">MongoDB</span>}
+                    {sanity && <span className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">SanityCMS</span>}
+                </div>
+            </a>
+        </Link>
     )
 }

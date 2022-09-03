@@ -17,24 +17,20 @@ export default function App() {
     toggleOverlay(n => !n)
   }
 
-  function blog() {
-    toggleClose(true)
-
-    setTimeout(() => {
-        router.push('/blog');
-    }, 800);
-  }
-
   function main() {
     return (
-      <div className='w-screen no-scroll overflow-x-hidden'>
-        <div className={`lg:w-1/2 w-full bg-dark h-screen absolute left-0 block ${close ? "animate__animated animate__fadeOutLeft animate-delay-4" : "" }`} data-aos="fade-left" data-aos-delay="0">
+      <div className='w-screen no-scroll overflow-x-hidden md:bg-leaves bg-dark bg-cover'>
+        <div className={`lg:w-1/2 w-full bg-dark h-screen absolute md:block hidden left-0 ${close ? "animate__animated animate__fadeOutLeft animate-delay-4" : "" }`} data-aos="fade-left" data-aos-delay="0">
         </div>
-
+        <div className='absolute top-2 right-2'>
+          <a href="https://www.buymeacoffee.com/tbhachu" target="_blank" rel="noreferrer" className='block p-2 px-4 text-white bg-[#101010] hover:bg-[#212121] transition hover:scale-105 md:border-[#101010] border-[#212121] border-2 hover:border-indigo-600'>
+            <span>Buy me a coffee</span>
+          </a>
+        </div>
         <div className='z-10'>
           <div className='max-w-7xl mx-auto md:h-screen flex overflow-x-hidden'>
             <div className='lg:flex lg:flex-row flex-col mx-auto md:h-screen'>
-              <Profile toggle={toggle} toBlog={blog} close={close} />
+              <Profile toggle={toggle} close={close} />
               <Content close={close} />
             </div>
           </div>

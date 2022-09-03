@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <div className='hidden sm:block'>
-        <AnimatedCursor/>
+        <AnimatedCursor color="147, 51, 234" />
       </div>
     </>
     
