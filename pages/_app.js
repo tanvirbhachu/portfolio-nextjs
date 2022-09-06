@@ -1,3 +1,4 @@
+export { reportWebVitals } from 'next-axiom';
 import '../styles/globals.css'
 import dynamic from 'next/dynamic'
 import AOS from 'aos'
