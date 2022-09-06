@@ -39,12 +39,7 @@ const ptComponents = {
 }
 
 const Post = ({post}) => {
-  const {
-    title,
-    mainImage,
-    publishedAt,
-    body = []
-  } = post
+
   return (
     <div className='w-full overflow-x-hidden'>
         <div>
@@ -57,15 +52,15 @@ const Post = ({post}) => {
                 </div>
             </div>
             <div className='text-white max-w-5xl p-5 mx-auto flex flex-col pt-[80px]'>
-                <div className='mb-5 w-full md:h-96 h-44 bg-cover bg-center rounded-xl' style={{backgroundImage: "url(" + urlFor(mainImage).width(2500).url() + ")"}}></div>
+                <div className='mb-5 w-full md:h-96 h-44 bg-cover bg-center rounded-xl' style={{backgroundImage: "url(" + urlFor(post.mainImage).width(2500).url() + ")"}}></div>
                 <div className='h-fit w-full mb-5'>
                     <div className='flex flex-col justify-center'>
-                        <h1 className='text-3xl font-bold'>{title}</h1>
-                        <span className='text-sm text-neutral-400'>{publishedAt}</span>
+                        <h1 className='text-3xl font-bold'>{post.title}</h1>
+                        <span className='text-sm text-neutral-400'>{post.publishedAt}</span>
                     </div>
                 </div>
                 <PortableText
-                    value={body}
+                    value={post.body}
                     components={ptComponents}
                 />
             </div>
