@@ -71,7 +71,7 @@ const Post = ({post}) => {
 
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
-  mainImage,
+  "mainImage": mainImage.asset->url,
   body,
   publishedAt
 }`
