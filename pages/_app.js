@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import AOS from 'aos'
 import { useEffect } from 'react'
 import Head from 'next/head'
+import 'animate.css';
 
 import "aos/dist/aos.css";
 

@@ -1,25 +1,23 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import Card from '../components/Card'
 import 'animate.css'
 
-export default function App() {
+import Link from 'next/link'
+import groq from 'groq'
+import client from '../lib/sanity'
+import imageUrlBuilder from '@sanity/image-url'
 
-  const router = useRouter()
+function urlFor (source) {
+  return imageUrlBuilder(client).image(source)
+}
 
-  const [blogPage, setBlogPage] = useState("")
-  const [blog, setBlog] = useState(false)
+export default function App({posts}) {
 
-  function index() {
-    setTimeout(() => {
-        router.push('/');
-    }, 800);
-  }
+  console.log(posts)
 
   return (
-    <div className='w-screen h-screen lg:bg-leaves bg-dark text-white bg-cover overflow-hidden'>
+    <div className='w-screen h-screen bg-dark text-white bg-cover overflow-hidden'>
       <Head>
         <meta charset="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -29,37 +27,39 @@ export default function App() {
         <title>Tanvir Bhachu's Blog</title>
       </Head>
 
-      {blog ? (
-        <div className='w-full h-full flex flex-col max-w-7xl mx-auto border-8 border-red-700'>
-        <div className='flex flex-col justify-between items-center p-6 relative text-white'>
-          <div className='h-full md:flex items-center absolute left-0 pl-6 hidden'>
-            <span onClick={index} className='hover:scale-105 transition-all ease-in'>My portfolio</span>  
-          </div>
-          <p className='font-semibold'>Tanvir Bhachu's</p>
-          <h1 className='text-4xl font-bold'>BLOG</h1>
+      <div className='py-4 px-5 md:px-10 w-screen h-fit fixed bg-[#212121] text-white flex items-center justify-between animate__animated animate__fadeInDown'>
+          <div id="name" className="md:text-xl text-xl h-full font-bold bg-clip-text 
+          text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Tanvir's Blog</div>
+            <div className='space-x-4'>
+                <Link href="/blog"><a className='hover:text-indigo-600 transition-all ease-in font-semibold '>Blog</a></Link>
+                <Link href="/"><a className='hover:text-indigo-600 transition-all ease-in font-semibold '>Portfolio</a></Link>
+            </div>
         </div>
+
+      <div className='w-full h-full flex flex-col max-w-7xl mx-auto pt-[80px]'>
+        
         <ResponsiveMasonry className="mx-2" columnsCountBreakPoints={{350: 1, 500: 2, 700: 3, 900: 4}}>
               <Masonry gutter="10px">
-                  <Card title="How I created a Social Media App from scratch" description="I felt bored so I decided to build a fully functioning social media platform using React, NextJS, Sanity CMS, MongoDB, TailwindCSS." />
+              {posts.length > 0 && posts.map(
+                  ({ mainImage, title = '', slug = '', publishedAt = '' }) =>
+                    slug && (
+                      <Card title={title} slug={slug} publishedAt={publishedAt} url={urlFor(mainImage).width(1000).url()} />
+                    )
+                )}
               </Masonry>
           </ResponsiveMasonry>
       </div>
-      ) : (
-        <div className='w-full h-full flex flex-col max-w-7xl mx-auto border-8 border-red-700'>
-          <div className='flex flex-col justify-center items-center p-6 relative text-white'>
-            <p className='font-semibold'>Tanvir Bhachu's</p>
-            <h1 className='text-4xl font-bold'>BLOG</h1>
-            <div className='h-full md:flex items-center absolute left-0 pl-6 hidden'>
-              <span onClick={index} className='hover:scale-105 transition-all ease-in'>My portfolio</span>  
-            </div>
-          </div>
-          <ResponsiveMasonry className="mx-2" columnsCountBreakPoints={{350: 1, 500: 2, 700: 3, 900: 4}}>
-                <Masonry gutter="10px">
-                    <Card title="How I created a Social Media App from scratch" description="I felt bored so I decided to build a fully functioning social media platform using React, NextJS, Sanity CMS, MongoDB, TailwindCSS." />
-                </Masonry>
-            </ResponsiveMasonry>
-        </div>
-      )}
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts = await client.fetch(groq`
+    *[_type == "post"] | order(publishedAt desc)
+  `)
+  return {
+    props: {
+      posts
+    }
+  }
 }
