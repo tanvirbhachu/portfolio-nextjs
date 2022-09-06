@@ -40,7 +40,7 @@ const ptComponents = {
 
 const Post = ({post}) => {
   const {
-    title = 'Missing title',
+    title,
     mainImage,
     publishedAt,
     body = []
