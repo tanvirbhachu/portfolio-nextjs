@@ -113,7 +113,8 @@ export async function getStaticProps({params}) {
   return {
     props: {
       post
-    }
+    },
+    revalidate: 100,
   }
 }
 export default Post
