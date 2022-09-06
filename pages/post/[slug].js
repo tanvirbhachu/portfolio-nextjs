@@ -28,17 +28,19 @@ const ptComponents = {
                 return null
             }
             return (
-                <img
-                alt={value.alt || ' '}
-                loading="lazy"
-                src={urlFor(value).width(320).height(240).fit('max').auto('format')}
-                />
+                <img alt={value.alt || ' '} loading="lazy" src={urlFor(value).width(320).height(240).fit('max').auto('format')} />
             )
         }
     }
 }
 
 const Post = ({post}) => {
+  const {
+    title = '',
+    mainImage = {},
+    publishedAt = '',
+    body = []
+  } = post
 
   return (
     <div className='w-full overflow-x-hidden'>
@@ -52,15 +54,15 @@ const Post = ({post}) => {
                 </div>
             </div>
             <div className='text-white max-w-5xl p-5 mx-auto flex flex-col pt-[80px]'>
-                <div className='mb-5 w-full md:h-96 h-44 bg-cover bg-center rounded-xl' style={{backgroundImage: "url(" + urlFor(post.mainImage).width(2500).url() + ")"}}></div>
+                <div className='mb-5 w-full md:h-96 h-44 bg-cover bg-center rounded-xl' style={{backgroundImage: "url(" + urlFor(mainImage).width(2500).url() + ")"}}></div>
                 <div className='h-fit w-full mb-5'>
                     <div className='flex flex-col justify-center'>
-                        <h1 className='text-3xl font-bold'>{post.title}</h1>
-                        <span className='text-sm text-neutral-400'>{post.publishedAt}</span>
+                        <h1 className='text-3xl font-bold'>{title}</h1>
+                        <span className='text-sm text-neutral-400'>{publishedAt}</span>
                     </div>
                 </div>
                 <PortableText
-                    value={post.body}
+                    value={body}
                     components={ptComponents}
                 />
             </div>
@@ -69,33 +71,49 @@ const Post = ({post}) => {
   )
 }
 
-const query = groq`*[_type == "post" && slug.current == $slug][0]{
-  title,
-  "mainImage": mainImage.asset->url,
-  body,
-  publishedAt
-}`
-
 export async function getStaticPaths() {
-  const paths = await client.fetch(
-    groq`*[_type == "post" && defined(slug.current)][].slug.current`
+  const posts = await client.fetch(
+    groq`*[_type == "post"]{
+      _id,
+      slug
+    }`
   )
 
+  const paths = posts.map((post)=> ({
+    params: {
+        slug: post.slug.current
+    }
+  }));
+
   return {
-    paths: paths.map((slug) => ({params: {slug}})),
-    fallback: true,
+    paths,
+    fallback: 'blocking'
   }
 }
 
-export async function getStaticProps(context) {
-  // It's important to default the slug so that it doesn't return "undefined"
-  const { slug = "" } = context.params
-  const post = await client.fetch(query, { slug })
+export async function getStaticProps({params}) {
+  const query = groq`*[_type == "post" && slug.current == $slug][0]{
+    _id,
+    title,
+    mainImage,
+    body,
+    publishedAt
+  }`
+  
+  const post = await client.fetch(query, {
+    slug: params?.slug,
+  });
+
+  if (!post) {
+    return {
+        notFound: true
+    }
+  }
+
   return {
     props: {
       post
     }
   }
 }
-
 export default Post
