@@ -23,8 +23,9 @@ export default function Left() {
                     </div>
                     <div className="">
                         <p className="text-neutral-400 mb-4 text-base">
-                        Welcome to my portfolio. I'm an 18 year old react developer and I've been coding for like 7 years now. I do a lot 
-                        of things and am slowly adding more, so have fun exploring!</p>
+                        Welcome to my portfolio. I'm a React frontend developer with 7 years of experience building projects 
+                        and playing around with different technologies and libraries. I plan on making cool projects and 
+                        experimenting.</p>
                     </div>
                     <div className="flex gap-3 w-full">
                         <a id="b1" className="flex-1 text-center opacity-0" href="https://www.linkedin.com/in/tanvir-bhachu/" target="_blank" rel="noreferrer">
