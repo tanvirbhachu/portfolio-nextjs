@@ -1,28 +1,6 @@
 import Project from './Project'
-import { useEffect } from 'react';
-import { gsap } from "gsap/dist/gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import useWindowDimensions from '../hooks/useWindowDimensions';
 
-gsap.registerPlugin(ScrollTrigger);
-
-export default function Content(props) {
-
-    const { height, width } = useWindowDimensions();
-
-    useEffect(() => {
-        if (width > 768) {
-            gsap.fromTo("#one", {opacity: 0, x: 40}, {opacity: 1, x: 0, duration: 0.5, ease: "none", scrollTrigger: {scroller: "#trigger", trigger: "#one", start: "top bottom", }});
-            gsap.fromTo("#two", {opacity: 0, x: 40}, {opacity: 1, x: 0, duration: 0.5, ease: "none", delay: 0.1, scrollTrigger: {scroller: "#trigger", trigger: "#two", start: "top bottom", }});
-            gsap.fromTo("#three", {opacity: 0, x: 40}, {opacity: 1, x: 0, duration: 0.5, ease: "none", delay: 0.2, scrollTrigger: {scroller: "#trigger", trigger: "#three", start: "top bottom", }});
-            gsap.fromTo("#four", {opacity: 0, x: 40}, {opacity: 1, x: 0, duration: 0.5, ease: "none", scrollTrigger: {scroller: "#trigger", trigger: "#four", start: "top bottom", }});
-        } else {
-            gsap.fromTo("#one", {opacity: 0, x: 50}, {opacity: 1, x: 0, duration: 0.5, ease: "none", scrollTrigger: {trigger: "#one", start: "top bottom", }});
-            gsap.fromTo("#two", {opacity: 0, x: 50}, {opacity: 1, x: 0, duration: 0.5, ease: "none", scrollTrigger: {trigger: "#two", start: "top bottom", }});
-            gsap.fromTo("#three", {opacity: 0, x: 50}, {opacity: 1, x: 0, duration: 0.5, ease: "none", scrollTrigger: {trigger: "#three", start: "top bottom", }});
-            gsap.fromTo("#four", {opacity: 0, x: 50}, {opacity: 1, x: 0, duration: 0.5, ease: "none", scrollTrigger: {trigger: "#four", start: "top bottom", }});
-        }
-    }, [])
+export default function Content() {
 
     return (
         <div id="trigger" className="lg:w-1/2 max-w-5xl md:p-10 px-5 pb-0 overflow-x-hidden overflow-y-scroll lg:no-scroll">
