@@ -47,14 +47,15 @@ export default function Content(props) {
                     <Project 
                         id="two"
                         title="AstroWeather" 
-                        description="AstroWeather is my first public project. It's a
-                        web weather app built using Tailwind CSS and makes use of a weather api for data. 
-                        The app is mobile-friendly and supports both Celsius and Fahrenheit aswell as kph 
-                        and mph."
-                        url="https://astroweather-tanvirbhachu.netlify.app/"
+                        description="AstroWeather is a weather app that shows you the weather and also the
+                        astronomical data for the day. It shows you the sunrise and sunset times, the moon phase
+                        and the current phase of the moon. It also shows you the current weather and let's you 
+                        pick a city to see the weather for that city."
+                        url="https://astroweather-next.vercel.app/"
                         tailwind={true}
-                        javascript={true}
-                        netlify={true}
+                        react={true}
+                        next={true}
+                        vercel={true}
                         api={true}
                     />
                     <Project 
