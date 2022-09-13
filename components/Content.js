@@ -25,10 +25,10 @@ export default function Content() {
                     <Project 
                         id="two"
                         title="AstroWeather" 
-                        description="AstroWeather is a weather app that shows you the weather and also the
-                        astronomical data for the day. It shows you the sunrise and sunset times, the moon phase
-                        and the current phase of the moon. It also shows you the current weather and let's you 
-                        pick a city to see the weather for that city."
+                        description="AstroWeather is a weather app that shows you the weather and also astronomical data 
+                        for the day. It shows you the sunrise and sunset times, the moon phase and the current phase of 
+                        the moon. It also shows you the current weather and lets you pick a city to see the weather for 
+                        that city."
                         url="https://astroweather-next.vercel.app/"
                         tailwind={true}
                         react={true}
