@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="description"
             content="Freelancer  |  Frontend Developer  |  I build and design modern websites that provide an amazing experience." />
         <title>Tanvir Bhachu's Portfolio</title>
+        <link rel="icon" href="/man.png" />
       </Head>
       <Component {...pageProps} />
       <div className='hidden sm:block'>

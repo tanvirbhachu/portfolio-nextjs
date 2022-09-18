@@ -29,7 +29,7 @@ export default function Content() {
                         for the day. It shows you the sunrise and sunset times, the moon phase and the current phase of 
                         the moon. It also shows you the current weather and lets you pick a city to see the weather for 
                         that city."
-                        url="https://astroweather-next.vercel.app/"
+                        url="https://astroweather.tanvirbhachu.dev/"
                         tailwind={true}
                         react={true}
                         next={true}
@@ -51,10 +51,10 @@ export default function Content() {
                     <Project
                         id="four" 
                         title="Google Search Clone" 
-                        description="Not a complete 1:1 clone as I added my own twist to it. I built this using 
-                        Next JS and Tailwind CSS. It has some extra features like editing the colors and add 
-                        quick links. Everything also gets saved to localStorage."
-                        url="https://google-clone-tanvirbhachu.vercel.app/"
+                        description="I didn't want to make an exact 1:1 clone of the Google home page so instead, I 
+                        changed the design quite a bit, adding more customizability and the ability to add bookmarks. 
+                        Everything is automatically saved in local storage."
+                        url="google-clone.tanvirbhachu.dev"
                         tailwind={true}
                         next={true}
                         vercel={true}
