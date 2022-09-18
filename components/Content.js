@@ -54,7 +54,7 @@ export default function Content() {
                         description="I didn't want to make an exact 1:1 clone of the Google home page so instead, I 
                         changed the design quite a bit, adding more customizability and the ability to add bookmarks. 
                         Everything is automatically saved in local storage."
-                        url="google-clone.tanvirbhachu.dev"
+                        url="https://google-clone.tanvirbhachu.dev"
                         tailwind={true}
                         next={true}
                         vercel={true}
