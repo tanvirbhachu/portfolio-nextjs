@@ -288,3 +288,17 @@ export default function Home() {
     </div>
   )
 }
+
+export async function getStaticPaths() {
+    return {
+      paths: [],
+      fallback: false, // can also be true or 'blocking'
+    }
+  }
+  
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context) {
+return {
+    props: {},
+}
+}
