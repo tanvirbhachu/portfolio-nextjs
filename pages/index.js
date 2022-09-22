@@ -18,10 +18,10 @@ export default function Home() {
   return (
     <div id='main' className={`scroll-smooth w-screen overflow-x-hidden bg-white dark:bg-black dark:text-white ${theme == 'dark' ? 'dark' : ''}`}>
 
-        <div className={`md:absolute z-50 bg-transparent dark:text-white top-0 left-0 px-5 py-5 pointer-events-none hover:scale-105 transition-all ease-in snap-none flex justify-between w-full`}>
-            <div className="p-2 pointer-events-initial">
+        <div className={`md:absolute z-50 bg-transparent dark:text-white top-0 left-0 px-5 py-5 pointer-events-none transition-all ease-in snap-none flex justify-between w-full`}>
+            <a className="p-2 pointer-events-initial hover:scale-105 animate__animated animate__slideInLeft animate__fast">
                 {theme == 'dark' ? <FiSun fontSize={25} onClick={() => setTheme('light')} /> : <FiMoon fontSize={25} onClick={() => setTheme('dark')} />}
-            </div>
+            </a>
             <Link href='/blog'><a className="pointer-events-initial flex gap-3 hover:gap-5 transition-all md:hidden ease-in items-center px-3 animate__animated animate__slideInRight animate__fast">
                 <a>Articles</a>
                 <FiArrowRight fontSize={24} />
@@ -289,16 +289,12 @@ export default function Home() {
   )
 }
 
-export async function getStaticPaths() {
+export async function getStaticProps() {
+    const hello = 'Hello World';
+
     return {
-      paths: [],
-      fallback: false, // can also be true or 'blocking'
+      props: {
+        hello,
+      },
     }
   }
-  
-// `getStaticPaths` requires using `getStaticProps`
-export async function getStaticProps(context) {
-return {
-    props: {},
-}
-}
