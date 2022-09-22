@@ -4,14 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer utilities {
 	* {
 		font-family: 'Nunito', sans-serif;
+	}
+
+	.project {
+		@apply hover:scale-105 text-center w-full py-4 hover:font-bold bg-gray-50 text-black hover:text-white dark:bg-[#212121] dark:text-white hover:bg-[#101010] dark:hover:bg-gray-50 dark:hover:text-black transition-all ease-in
 	}
 
 	/* width */
 	::-webkit-scrollbar {
 		width: 8px;
+		height: 4px;
 	}
 
 	/* Track */
@@ -63,5 +68,72 @@
 
 	.animate-delay-5 {
 		animation-delay: 0.2s;
+	}
+
+	.orbit {
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-name: orbit;
+		-webkit-animation-duration: 10s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-timing-function: linear;
+		-moz-animation-name: orbit;
+	}
+
+	.orbit-forward {
+		animation-direction: normal;
+	}
+
+	.orbit-backward {
+		animation-direction: reverse;
+	}
+
+	.orbit-stop {
+		animation-play-state: paused;
+	}
+
+	.animation-delay {
+		animation-delay: 0.5s;
+	}
+
+	.animation-delay-1 {
+		animation-delay: 1s;
+	}
+
+	.animation-delay-1-5 {
+		animation-delay: 1.5s;
+	}
+
+	.animation-delay-2 {
+		animation-delay: 2s;
+	}
+
+	.animation-delay-2-5 {
+		animation-delay: 2.5s;
+	}
+
+	.icon-l1 {
+		@apply pointer-events-none absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-transparent orbit orbit-forward group-hover:orbit-stop;
+	}
+
+	.icon-l2 {
+		@apply pointer-events-initial hover:scale-110 orbit orbit-backward group-hover:orbit-stop absolute top-[140px] group-hover:top-[115px] left-0 w-[30px] h-[30px] group-hover:w-[50px] group-hover:h-[50px] bg-gray-200 dark:bg-[#101010] rounded-full transition-all ease-in duration-300 flex justify-center items-center;
+	}
+
+	.mobile.icon-l1 {
+		@apply rounded-full;
+	}
+
+	@-webkit-keyframes orbit { 
+		from { -webkit-transform:rotate(0deg) } 
+		to { -webkit-transform:rotate(360deg) } 
+	}
+	@-moz-keyframes orbit { 
+		from { -moz-transform:rotate(0deg) } 
+		to { -moz-transform:rotate(360deg) } 
+	}
+
+	.pointer-events-initial {
+		pointer-events: initial;
 	}
 }
