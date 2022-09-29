@@ -9,6 +9,10 @@
 		font-family: 'Nunito', sans-serif;
 	}
 
+	.font-inter {
+		font-family: 'Inter', sans-serif;
+	}
+
 	.project {
 		@apply hover:scale-105 text-center w-full py-4 hover:font-bold bg-gray-50 text-black hover:text-white dark:bg-[#212121] dark:text-white hover:bg-[#101010] dark:hover:bg-gray-50 dark:hover:text-black transition-all ease-in
 	}

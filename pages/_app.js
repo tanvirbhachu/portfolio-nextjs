@@ -24,7 +24,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <div className='hidden sm:block cursor-none'>
-        <AnimatedCursor color="147, 51, 234" />
+        <AnimatedCursor 
+        color="147, 51, 234"
+        clickables={['.clickable', 'a']} />
       </div>
     </>
     
