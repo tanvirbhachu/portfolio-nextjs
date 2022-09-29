@@ -280,7 +280,7 @@ export default function Home() {
 
             {/* Desktop Wrapper initial={{ rotate: 0 }} animate={{ rotate: 360 }} */}
 
-            <div className="hidden md:flex flex-col w-full snap-y overflow-y-scroll scroll-smooth relative h-screen">
+            <div className="hidden md:flex flex-col w-full snap-y overflow-y-scroll scroll-smooth snap-mandatory relative h-screen">
                 <div id='home' className="h-screen w-full relative snap-center">
                     <motion.div 
                     className="h-screen w-full"
