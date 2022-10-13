@@ -1,16 +1,15 @@
 import { FiLinkedin, FiArrowRight, FiGithub, FiYoutube, FiZap, FiTwitter, FiInstagram, FiAtSign, FiCoffee, FiMail, FiX } from "react-icons/fi";
-import { FaReact } from "react-icons/fa";
+import { FaReact, FaDev } from "react-icons/fa";
 import { TbBrandNextjs } from "react-icons/tb";
 import { IoLogoJavascript, IoLogoNodejs } from "react-icons/io";
 import { SiVercel, SiNetlify, SiMongodb, SiTailwindcss } from "react-icons/si";
 import { MdDesignServices } from "react-icons/md";
-import { AiFillApi, AiOutlineDeploymentUnit } from "react-icons/ai";
+import { AiFillApi, AiOutlineDeploymentUnit, AiOutlineMedium } from "react-icons/ai";
 import { BsFileRichtextFill } from "react-icons/bs"; 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion"  
-
 
 export default function Home() {
 
@@ -26,6 +25,8 @@ export default function Home() {
     const [skillI, setSkillI] = useState(FaReact)
     const [skill, setSkill] = useState(1)
 
+    const [articles, setArticles] = useState(false);
+
     function Skill(n, d, i, s) {
         setSkillD(d)
         setSkillN(n)
@@ -34,10 +35,9 @@ export default function Home() {
     }
 
     return (
-        <div className="w-full h-full overflow-hidden bg-black">
-
-            {project != 0 && (
-                <AnimatePresence>
+        <div className="w-screen h-screen overflow-hidden bg-black">
+            <AnimatePresence>
+                {project != 0 && (
                     <motion.div exit={{ opacity: 0, y: 100}} initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                     className={`fixed top-0 left-0 z-10 w-full h-full flex flex-col`}>
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="flex-grow w-full bg-black/50"></motion.div>
@@ -57,12 +57,12 @@ export default function Home() {
                             <span className="block text-neutral-400">{projectD}</span>
                         </motion.div>
                     </motion.div>
-                </AnimatePresence>
-            )}
+                )}
+            </AnimatePresence>
 
             {/* Mobile Wrapper */}
             
-            <div className="md:hidden flex flex-col w-full snap-y overflow-y-scroll scroll-smooth relative snap-mandatory h-screen">
+            <div className="md:hidden flex flex-col w-full snap-y overflow-y-scroll scroll-smooth relative snap-proximity h-screen">
                 <div id='m-home' className="h-screen w-full relative snap-center">
                     <motion.div 
                     className="h-screen w-full"
@@ -102,6 +102,8 @@ export default function Home() {
                                     <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{delay: 0.6}}>Welcome to my portfolio. I'm a React frontend developer with 7 years of 
                                         experience building projects and playing around with different technologies 
                                         and libraries. I plan on making cool projects and experimenting.</motion.div>
+                                    <motion.div className="px-10 py-3 mt-5 bg-neutral-900 w-fit" onClick={() => setArticles(true)}
+                                    initial={{opacity: 0}} whileInView={{opacity: 1}} transition={{delay: 0.8}}>Articles</motion.div>
                                 </motion.div>
                             </div>
 
@@ -121,7 +123,7 @@ export default function Home() {
                         layout="fill" objectFit="cover" 
                         alt='one' sizes="100vw"
                         quality={100} placeholder="blur"
-                        blurDataURL="/two.jpg" lazy />
+                        blurDataURL="/two.jpg" />
                     </motion.div>
                     <div className="absolute top-0 left-0 w-full h-full">
                         <div className="flex flex-col justify-between items-center h-full w-full relative">
@@ -133,28 +135,28 @@ export default function Home() {
 
                             <div className="w-full h-full px-5">
                                 <div className="w-full text-white space-y-3">
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} onClick={() => {setProject(1); setProjectN('AstroWeather'); setProjectL('https://astroweather.tanvirbhachu.dev/');setProjectD(
+                                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} onClick={() => {setProject(1); setProjectN('AstroWeather'); setProjectL('https://astroweather.tanvirbhachu.dev/');setProjectD(
                                         'AstroWeather is a weather app that shows you the weather and also astronomical data for the day. It shows you the sunrise and sunset times, the moon phase and the current phase of the moon. It also shows you the current weather and lets you pick a city to see the weather for that city.'
                                     )}} className={`overflow-hidden transition-all ease-in ${project == 1 ? 'border-l-8 border-[#191919] pl-4' : 'border-l-0 border-[#191919] pl-0'}`}>
                                         <div className="w-full bg-[#191919] py-4 px-10">
                                             <span className="text-2xl">AstroWeather</span>
                                         </div>
                                     </motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} onClick={() => {setProject(2); setProjectN('Google Clone'); setProjectL('https://google.tanvirbhachu.dev/');setProjectD(
+                                    <motion.div transition={{delay: 0.1}} initial={{opacity: 0}} whileInView={{opacity: 1}} onClick={() => {setProject(2); setProjectN('Google Clone'); setProjectL('https://google.tanvirbhachu.dev/');setProjectD(
                                         "I didn't want to make an exact 1:1 clone of the Google home page so instead, I changed the design quite a bit, adding more customizability and the ability to add bookmarks. Everything is automatically saved in local storage."
                                     )}} className={`overflow-hidden transition-all ease-in ${project == 2 ? 'border-l-8 border-[#191919] pl-4' : 'border-l-0 border-[#191919] pl-0'}`}>
                                         <div className="w-full bg-[#191919] py-4 px-10">
                                             <span className="text-2xl">Google Clone</span>
                                         </div>
                                     </motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} onClick={() => {setProject(3); setProjectN('Veritas'); setProjectL('https://veritas-tanvirbhachu.vercel.app/');setProjectD(
+                                    <motion.div transition={{delay: 0.2}} initial={{opacity: 0}} whileInView={{opacity: 1}} onClick={() => {setProject(3); setProjectN('Veritas'); setProjectL('https://veritas-tanvirbhachu.vercel.app/');setProjectD(
                                         'Veritas is social media platform I built from scratch. It has a fully functioning login and register system with verification and an email forgot password system. You can create posts on your account with image upload and also delete them. You can edit your profile picture and bio. It also has a global chat system where you can chat with other users.'
                                     )}} className={`overflow-hidden transition-all ease-in ${project == 3 ? 'border-l-8 border-[#191919] pl-4' : 'border-l-0 border-[#191919] pl-0'}`}>
                                         <div className="w-full bg-[#191919] py-4 px-10">
                                             <span className="text-2xl">Veritas</span>
                                         </div>
                                     </motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} onClick={() => {setProject(4); setProjectN('HyperJournal'); setProjectL('https://hyperjournal.netlify.app/');setProjectD(
+                                    <motion.div transition={{delay: 0.3}} initial={{opacity: 0}} whileInView={{opacity: 1}} onClick={() => {setProject(4); setProjectN('HyperJournal'); setProjectL('https://hyperjournal.netlify.app/');setProjectD(
                                         'This was my first React project. I built a web journal using TailwindCSS and the Mantine React framework. It has a few features I added such as dark mode, a rich text editor, saving all data in local storage and using react components to tie everything together.'
                                     )}} className={`overflow-hidden transition-all ease-in ${project == 4 ? 'border-l-8 border-[#191919] pl-4' : 'border-l-0 border-[#191919] pl-0'}`}>
                                         <div className="w-full bg-[#191919] py-4 px-10">
@@ -174,7 +176,7 @@ export default function Home() {
                         layout="fill" objectFit="cover" 
                         alt='one' sizes="100vw"
                         quality={100} placeholder="blur"
-                        blurDataURL="/three.png" lazy />
+                        blurDataURL="/three.png" />
                     </motion.div>
                     <div className="absolute top-0 left-0 w-full h-full">
                         <div className="flex flex-col justify-between items-center h-full w-full relative">
@@ -186,32 +188,32 @@ export default function Home() {
 
                             <div className="w-full h-full px-5">
                                 <div className="w-full text-white space-y-3">
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><FaReact fontSize={25} /></span>
                                         <span className="text-2xl">REACT</span>
                                     </div></motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div transition={{delay: 0.05}} initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><TbBrandNextjs fontSize={25} /></span>
                                         <span className="text-2xl">NEXT JS</span>
                                     </div></motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div transition={{delay: 0.1}} initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><IoLogoJavascript fontSize={25} /></span>
                                         <span className="text-2xl">JAVASCIPT</span>
                                     </div></motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div transition={{delay: 0.15}} initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><SiTailwindcss fontSize={25} /></span>
                                         <span className="text-2xl">TAILWINDCSS</span>
                                     </div></motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div transition={{delay: 0.2}} initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><BsFileRichtextFill fontSize={25} /></span>
                                         <span className="text-2xl">SANITY CMS</span>
                                     </div></motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div transition={{delay: 0.25}} initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in max-h-16`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><SiMongodb fontSize={25} /></span>
                                         <span className="text-2xl">MONGO DB</span>
                                     </div></motion.div>
-                                    <motion.div initial={{width: 0}} whileInView={{width: '100%'}} className={`overflow-hidden transition-all ease-in`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
-                                        <span><FiZap fontSize={25} color='yellow' /></span>
+                                    <motion.div transition={{delay: 0.3}} initial={{opacity: 0}} whileInView={{opacity: 1}} className={`overflow-hidden transition-all ease-in`}><div className="w-full bg-[#191919] py-4 px-10 flex items-center space-x-3">
+                                        <span><MdDesignServices fontSize={25} /></span>
                                         <span className="text-2xl">UI DESIGN</span>
                                     </div></motion.div>
                                 </div>
@@ -227,7 +229,7 @@ export default function Home() {
                         layout="fill" objectFit="cover" 
                         alt='one' sizes="100vw"
                         quality={100} placeholder="blur"
-                        blurDataURL="/four.jpg" lazy />
+                        blurDataURL="/four.jpg" />
                     </motion.div>
                     <div className="absolute top-0 left-0 w-full h-full">
                         <div className="flex flex-col items-center justify-between h-full w-full relative">
@@ -253,17 +255,10 @@ export default function Home() {
                                     <a href='mailto:tbhachu2@gmail.com' className="w-full h-32 bg-[#191919] flex items-center justify-center">
                                         <FiMail fontSize={40} stroke="white" />
                                     </a>
-                                    <Link href='#' rel='norefferor noopener'><a className="w-full h-32 bg-[#191919] flex items-center justify-center">
-                                        <FiYoutube fontSize={40} stroke="white" />
+                                    <Link href="https://www.buymeacoffee.com/tbhachu" rel='norefferor noopener'><a className="w-full h-32 bg-[#191919] flex items-center justify-center">
+                                        <FiCoffee fontSize={40} stroke="white" />
                                     </a></Link>
                                 </div>
-
-                                <motion.div whileTap={{ scale: 0.9 }} className="w-full h-fit px-5 mt-2">
-                                    <Link href="https://www.buymeacoffee.com/tbhachu" rel='norefferor noopener'><a className="w-full h-32 bg-[#191919] flex items-center justify-center text-white space-x-3">
-                                        <FiCoffee fontSize={40} stroke="white" />
-                                        <span className="font-bold text-xl">Support Me</span>
-                                    </a></Link>
-                                </motion.div>
                             </div>
 
                             <div className="text-white w-full px-5 flex-col py-5">
@@ -280,7 +275,7 @@ export default function Home() {
 
             {/* Desktop Wrapper initial={{ rotate: 0 }} animate={{ rotate: 360 }} */}
 
-            <div className="hidden md:flex flex-col w-full snap-y overflow-y-scroll scroll-smooth snap-mandatory relative h-screen">
+            <div className="hidden md:flex flex-col w-full overflow-y-scroll scroll-smooth relative h-screen">
                 <div id='home' className="h-screen w-full relative snap-center">
                     <motion.div 
                     className="h-screen w-full"
@@ -314,13 +309,12 @@ export default function Home() {
                                             and libraries. I plan on making cool projects and experimenting.</motion.div>
                                     </motion.div>
                                 </div>
-                                <motion.a
-                                    href="/blog" className="flex items-center group w-fit">
+                                <motion.div onClick={() => setArticles(true)} className="flex items-center group w-fit">
                                     <motion.div initial={{scale: 0}} whileInView={{scale: 1}}
                                         className="h-12 w-12 border-2 border-neutral-700 rounded-full group-hover:scale-105 transition-all ease-in"></motion.div>
                                     <motion.span initial={{opacity: 0, x: -30}} whileInView={{opacity: 1, x: 0}} delay={1}
                                     className="-ml-6 group-hover:-ml-2 transition-all ease-in z-10 font-semibold">Articles</motion.span>
-                                </motion.a>
+                                </motion.div>
                             </div>
                             <motion.div transition={{delay: 0.2, type: 'spring'}}
                             initial={{scale: 0}} whileInView={{scale: 1}}
@@ -329,9 +323,9 @@ export default function Home() {
                                     transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                                     className="border-2 border-neutral-600 rounded-full h-[400px] w-[400px] flex items-center justify-center relative">
                                     
-                                    <motion.div href="https://www.linkedin.com/in/tanvir-bhachu/" target='_blank' rel='noreferrer'
+                                    <motion.a href="https://www.linkedin.com/in/tanvir-bhachu/" target='_blank' rel='noreferrer'
                                         initial={{ rotate: 360 }} animate={{ rotate: 0 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                        className="border-2 border-neutral-600 rounded-full h-[300px] w-[300px] flex items-center justify-center relative">
+                                        className="block border-2 border-neutral-600 rounded-full h-[300px] w-[300px] flex items-center justify-center relative">
                                         <motion.a initial={{ rotate: 0 }} animate={{ rotate: 360 }}
                                             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
                                             className="w-[200px] h-[200px] bg-[#191919] rounded-full flex items-center justify-center">
@@ -367,7 +361,7 @@ export default function Home() {
                                                 <FiCoffee fontSize={20} />
                                             </div>
                                         </motion.a>
-                                    </motion.div>
+                                    </motion.a>
 
                                     {/* FiMail */}
                                     <motion.a href="mailto:tbhachu2@gmail.com" target='_blank' rel='noreferrer' 
@@ -459,7 +453,7 @@ export default function Home() {
                                 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{delay: 0.2}}>
                                     <Image src={projectP} objectPosition={'top'}
                                     layout="fill" objectFit="cover" alt='two' sizes="100vw"
-                                    quality={100} lazy className="rounded-xl" />
+                                    quality={100} className="rounded-xl" />
                                     <motion.a href={projectL} target='_blank' whileHover={{scale: 1.1}} whileTap={{scale: 0.9}}
                                     className="w-12 h-12 bg-[#191919] -bottom-6 right-12 absolute z-30 flex items-center justify-center">
                                         <FiArrowRight fontSize={25} />
@@ -477,7 +471,7 @@ export default function Home() {
                 <div id='skills' className="h-screen w-full relative snap-center">
                     <motion.div className="h-screen w-full"
                     initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.3 }}>
+                    transition={{ duration: 1, delay: 0.1 }}>
                         <Image src='/three.png' 
                         layout="fill" objectFit="cover" alt='two' sizes="100vw"
                         quality={100} />
@@ -568,19 +562,21 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
-                            className="text-white max-w-4xl flex mx-auto items-center">
-                                <motion.div initial={{ rotate: 90 }} whileInView={{ rotate: 0 }} transition={{ duration: 2 }}
-                                className="flex flex-grow aspect-square justify-center items-center w-28 h-28 border-2 border-[#191919] rounded-full">
-                                    <span className="text-4xl">{skillI}</span>
-                                </motion.div>
-                                <div className="-ml-4 flex-shrink">
-                                    <motion.div initial={{ width: '0%' }} whileInView={{ width: '100%' }} className="py-2 px-12 bg-[#191919]/50 max-w-fit mb-2">
-                                        <span className="font-bold">{skillN}</span>
+                            <div className="h-full flex flex-grow">
+                                <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+                                className="text-white max-w-4xl flex m-auto items-center">
+                                    <motion.div initial={{ rotate: 180, opacity: 0 }} whileInView={{ rotate: 0, opacity: 1 }} transition={{ duration: 0.5 }}
+                                    className="flex flex-grow aspect-square justify-center items-center w-28 h-28 border-2 border-[#191919] rounded-full">
+                                        <span className="text-4xl">{skillI}</span>
                                     </motion.div>
-                                    <span className="text-neutral-400">{skillD}</span>
-                                </div>
-                            </motion.div>
+                                    <div className="-ml-4 flex-shrink">
+                                        <motion.div initial={{ width: '0%' }} whileInView={{ width: '100%' }} className="py-2 px-12 bg-[#191919] max-w-fit mb-2">
+                                            <span className="font-bold">{skillN}</span>
+                                        </motion.div>
+                                        <span className="text-neutral-400">{skillD}</span>
+                                    </div>
+                                </motion.div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -601,49 +597,41 @@ export default function Home() {
                                         <div className="text-white font-inter text-2xl font-semibold"><span>CONNECT</span></div>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-4 gap-3">
+                                <div className="grid grid-cols-3 gap-3">
                                     <div className="flex flex-col space-y-3">
                                         <motion.a href="https://www.linkedin.com/in/tanvir-bhachu/"
                                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center">
+                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center border-2 border-transparent hover:border-neutral-700">
                                             <FiLinkedin fontSize={34} />
                                         </motion.a>
                                         <motion.a href='https://github.com/DarkSimilarity'
                                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center">
+                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center border-2 border-transparent hover:border-neutral-700">
                                             <FiGithub fontSize={34} />
                                         </motion.a>
                                     </div>
                                     <div className="flex flex-col space-y-3">
                                         <motion.a href='https://www.instagram.com/tanvir.bhachu/'
                                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center">
+                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center border-2 border-transparent hover:border-neutral-700">
                                             <FiInstagram fontSize={34} />
                                         </motion.a>
-                                        <motion.a href='#'
+                                        <motion.a href='https://www.buymeacoffee.com/tbhachu'
                                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center">
-                                            <FiYoutube fontSize={34} />
+                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center border-2 border-transparent hover:border-neutral-700">
+                                            <FiCoffee fontSize={34} />
                                         </motion.a>
                                     </div>
                                     <div className="flex flex-col space-y-3">
                                         <motion.a href='mailto:tbhachu2@gmail.com'
                                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center">
+                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center border-2 border-transparent hover:border-neutral-700">
                                             <FiMail fontSize={34} />
                                         </motion.a>
                                         <motion.a href='https://twitter.com/DarkSimilarity'
                                         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center">
+                                        className="bg-[#191919] clickable w-full h-44 flex justify-center items-center border-2 border-transparent hover:border-neutral-700">
                                             <FiTwitter fontSize={34} />
-                                        </motion.a>
-                                    </div>
-                                    <div className="flex flex-col space-y-3">
-                                        <motion.a href='https://www.buymeacoffee.com/tbhachu'
-                                        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        className="bg-[#191919] clickable w-full h-full flex flex-col justify-center items-center">
-                                            <FiCoffee fontSize={34} />
-                                            <span className="block font-bold">Support Me</span>
                                         </motion.a>
                                     </div>
                                 </div>
@@ -661,6 +649,39 @@ export default function Home() {
                     </div>  
                 </div>
             </div>
+
+            <AnimatePresence>
+                {articles && (
+                    <motion.div id="articles" className='absolute top-0 left-0 right-0 bottom-0 w-full h-screen z-20 overflow-hidden'>
+                        <motion.div className='relative w-full h-full'>
+                            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.5}}
+                            className='bg-black/50 h-full w-full' onClick={() => setArticles(false)}></motion.div>
+                            <motion.div initial={{x: 400}} animate={{x: 0}} exit={{x: 400}} transition={{duration: 0.5}}
+                            className='bg-neutral-900 md:w-[400px] w-screen h-full absolute top-0 right-0 p-8 text-white space-y-5'>
+                                <div className="flex items-center justify-between">
+                                    <p className="text-xl font-bold font-inter">Blog Platforms</p>
+                                    <FiX fontSize={36} className="cursor-pointer" onClick={() => setArticles(false)} />
+                                </div>
+                                <motion.a whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
+                                href="https://medium.com/@tanvirbhachu" className="border-2 bg-neutral-800 border-neutral-700 p-5 flex space-x-4 items-center">
+                                    <AiOutlineMedium className="text-4xl" />
+                                    <p className="text-xl font-bold font-inter">Medium</p>
+                                </motion.a>  
+                                <motion.a whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
+                                href="https://dev.to/timtan" className="border-2 bg-neutral-800 border-neutral-700 p-5 flex space-x-4 items-center">
+                                    <FaDev className="text-4xl" />
+                                    <p className="text-xl font-bold font-inter">DEV Community</p>
+                                </motion.a>  
+                                <motion.a whileHover={{scale: 1.05}} whileTap={{scale: 0.95}}
+                                href='https://www.linkedin.com/in/tanvir-bhachu/recent-activity/posts/' className="border-2 bg-neutral-800 border-neutral-700 p-5 flex space-x-4 items-center">
+                                    <FiLinkedin className="text-4xl" />
+                                    <p className="text-xl font-bold font-inter">LinkedIn</p>
+                                </motion.a>  
+                            </motion.div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     )
 }
