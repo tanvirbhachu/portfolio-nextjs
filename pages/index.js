@@ -11,8 +11,6 @@ import Image from 'next/image'
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion"  
 
-import Script from 'next/script'
-
 export default function Home() {
 
     const [project, setProject] = useState(0)
@@ -38,20 +36,6 @@ export default function Home() {
 
     return (
         <div className="w-screen h-screen overflow-hidden bg-black">
-
-            <Script
-                src="https://www.googletagmanager.com/gtag/js?id=G-W6DE8CYHHE"
-                strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-                {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){window.dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'G-W6DE8CYHHE');
-                `}
-            </Script>
 
             <AnimatePresence>
                 {project != 0 && (
