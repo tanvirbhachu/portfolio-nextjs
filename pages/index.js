@@ -11,7 +11,11 @@ import Image from 'next/image'
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion"  
 
+import ReactGA from 'react-ga';
+
 export default function Home() {
+
+    ReactGA.initialize('G-W6DE8CYHHE');
 
     const [project, setProject] = useState(0)
     const [dproject, setdProject] = useState(1)
