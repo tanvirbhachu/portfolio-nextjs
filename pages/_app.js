@@ -22,7 +22,7 @@ function CustomApp({ Component, pageProps }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
+              page_path: 'index',
               });
           `}
       </Script>
